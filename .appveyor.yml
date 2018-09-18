@@ -7,16 +7,16 @@ cache:
   - '%LOCALAPPDATA%\Composer\files'
 
 init:
-  - SET PATH=C:\tools\php56;%PATH%
+  - SET PATH=C:\tools\php72;%PATH%
   - SET PHP=1
   - SET ANSICON=121x90 (121x90)
   - SET SYMFONY_DEPRECATIONS_HELPER=weak
 
 install:
-  - IF EXIST C:\tools\php56 (SET PHP=0)
+  - IF EXIST C:\tools\php72 (SET PHP=0)
   - IF %PHP%==1 appveyor-retry cinst -y OpenSSL.Light
-  - IF %PHP%==1 appveyor-retry cinst -y php --version 5.6.38
-  - IF %PHP%==1 cd C:\tools\php56
+  - IF %PHP%==1 appveyor-retry cinst -y php --version 7.2.10
+  - IF %PHP%==1 cd C:\tools\php72
   - IF %PHP%==1 copy php.ini-production php.ini
   - IF %PHP%==1 echo date.timezone="UTC" >> php.ini
   - IF %PHP%==1 echo extension_dir=ext >> php.ini
@@ -40,4 +40,9 @@ install:
 
 test_script:
   - cd C:\projects\contao
-  - vendor\bin\phpunit.bat
+  - vendor\bin\phpunit.bat -c calendar-bundle
+  - vendor\bin\phpunit.bat -c core-bundle
+  - vendor\bin\phpunit.bat -c faq-bundle
+  - vendor\bin\phpunit.bat -c installation-bundle
+  - vendor\bin\phpunit.bat -c manager-bundle
+  - vendor\bin\phpunit.bat -c news-bundle
