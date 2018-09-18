@@ -15,7 +15,7 @@ init:
 install:
   - IF EXIST C:\tools\php56 (SET PHP=0)
   - IF %PHP%==1 appveyor-retry cinst -y OpenSSL.Light
-  - IF %PHP%==1 appveyor-retry cinst -y php --version 5.6.33
+  - IF %PHP%==1 appveyor-retry cinst -y php --version 5.6.38
   - IF %PHP%==1 cd C:\tools\php56
   - IF %PHP%==1 copy php.ini-production php.ini
   - IF %PHP%==1 echo date.timezone="UTC" >> php.ini

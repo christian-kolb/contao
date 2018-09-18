@@ -7,6 +7,9 @@ composer:
     require-dev:
         'contao/monorepo-tools': 'dev-master'
         'friendsofphp/php-cs-fixer': '^2.12'
+        'php-coveralls/php-coveralls': '^2.1'
+        'phpunit/phpunit': '^5.7.26'
+        'symfony/phpunit-bridge': '^3.3.11'
 
 repositories:
     core-bundle:
